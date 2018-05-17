@@ -38,7 +38,9 @@ gem 'thor', '0.20.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rails-controller-testing'
 end
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'bcrypt', '~> 3.1.7'        # Use ActiveModel has_secure_password
+gem 'pry-rails'

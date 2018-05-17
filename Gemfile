@@ -40,3 +40,7 @@ group :development do
   gem 'listen', '~> 3.0.5'
 end
 gem 'bootstrap-sass'
+
+gem 'devise'
+
+gem 'bcrypt', '~> 3.1.7'        # Use ActiveModel has_secure_password

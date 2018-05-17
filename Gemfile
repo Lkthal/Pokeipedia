@@ -40,10 +40,8 @@ group :development do
   gem 'listen', '~> 3.0.5'
 end
 gem 'bootstrap-sass'
-
 gem 'devise'
-gem 'twitter-bootstrap-rails'
-gem 'devise-bootstrap-views'
+gem 'twiiter-bootstrap'
 gem 'bcrypt', '~> 3.1.7'        # Use ActiveModel has_secure_password
 gem 'rspec-rails', '~> 3.0'
 gem 'rails-controller-testing'

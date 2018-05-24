@@ -1,15 +1,15 @@
 class WikiPolicy < ApplicationPolicy
 
-  #attr_reader :user, :wiki
+  attr_reader :user, :wiki
 
-  #def initialize(user, wiki)
-    #@user = user
-    #@wiki = wiki
-  #end
+  def initialize(user, wiki)
+    @user = user
+    @wiki = wiki
+  end
 
   def index?
     true
-  end 
+  end
 
   def create?
     true

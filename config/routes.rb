@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :users
   resources :wikis
   devise_for :users
 

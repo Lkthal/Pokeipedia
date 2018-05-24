@@ -1,0 +1,11 @@
+<br><br>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div><%= @user.username.capitalize %>'s Profile
+      <% if @user == current_user %><%= link_to "(edit info)", edit_user_registration_path(@user), :class => 'rq-link' %><% end %>
+    </div>
+    <br>
+    <p><strong>Username:</strong> <%= @user.username %></p>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+  </div>
+</div>

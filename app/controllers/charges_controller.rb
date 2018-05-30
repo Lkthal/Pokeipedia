@@ -1,12 +1,11 @@
 class ChargesController < ApplicationController
 
-  before_filter :authenticate_user!
-
   def new
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "Blocipedia Premium Membership - #{current_user.username}",
+      description: "Blocipedia Premium Membership",
       amount: 15_00
+    }
   end
 
   def create

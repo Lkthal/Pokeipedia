@@ -1,3 +1,28 @@
-<h1>Welcome#index</h1>
+<h1><div class="h1welcome">Blocipedia:</div></h1>
 
 <p><% link_to "logout", destroy_user_session_path, method: :delete %></p>
+
+<br>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="jumbotron">
+    <center>
+    <% unless user_signed_in? %>
+      <p>Start creating and sharing your own wikis.</p>
+      <br><br>
+      <p>
+        <%= link_to "Sign In", new_user_session_path, :class => 'rq-link' %> or
+        <%= link_to "Sign Up", new_user_registration_path, :class => 'rq-link' %>
+      </p>
+      <br><br>
+      <p>or just browse some <%= link_to "wikis", wikis_path, :class => 'wiki-link' %></p>
+    <% else %>
+      <p>See recent wikis <%= link_to "here", wikis_path, :class => 'wiki-link' %></p>
+    <% end %>
+    <% if current_user && current_user.standard? %>
+      <%= link_to "Upgrade to Premium!", new_charge_path, :class => 'ghost-button-del' %>
+    <% end %>
+    <br>
+
+    </center>
+  </div>
+</div>

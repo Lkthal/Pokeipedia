@@ -1,4 +1,4 @@
-class PremiumsController < ApplicationController
+class ChargesController < ApplicationController
 
   before_filter :authenticate_user!
 

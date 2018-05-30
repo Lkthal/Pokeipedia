@@ -1,13 +1,16 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki).order("title ASC")
     authorize @wikis
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
-
-  end
+     @wiki = Wiki.find(params[:id])
+     unless !@wiki.private? || (current_user.admin? || current_user.premium?)
+       flash[:alert] = "You must be a premium user to view private wikis."
+       redirect_to(request.referrer || root_path)
+     end
+   end
 
   def new
     @wiki = Wiki.new
@@ -17,6 +20,7 @@ class WikisController < ApplicationController
   def create
     @wiki = Wiki.new(wiki_params)
     authorize @wiki
+    @wiki.private = params[:wiki][:private]
     @wiki.user = current_user
 
     if @wiki.save
@@ -37,6 +41,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     authorize @wiki
     @wiki.assign_attributes(wiki_params)
+    @wiki.private = params[:wiki][:private]
 
     if @wiki.save
       flash[:notice] = "Wiki was updated successfully."
@@ -50,7 +55,7 @@ class WikisController < ApplicationController
   def destroy
     @wiki = Wiki.find(params[:id])
     authorize @wiki
-    
+
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
       redirect_to wikis_path

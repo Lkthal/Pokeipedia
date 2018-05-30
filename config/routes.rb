@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   resources :users
   resources :wikis
   devise_for :users
-  resources :premiums, only: [:new, :create]
-  get 'premiums/create'
-  post 'premiums/downgrade' => 'premiums#downgrade'
+  get 'charges/create'
+  post 'users/downgrade' => 'users#downgrade'
+  resources :charges, only: [:new, :create]
 
   root 'welcome#index'
   get 'about' => 'welcome#about'

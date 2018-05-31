@@ -17,6 +17,32 @@ users = User.all
 end
 wikis = Wiki.all
 
+premium = User.new(
+    email: "premium@bloc.com",
+    password: "123456",
+    role: "premium"
+)
+premium.skip_confirmation!
+premium.save!
+
+
+standard = User.new(
+    email: "standard@bloc.com",
+    password: "123456",
+    role: "standard"
+)
+standard.skip_confirmation!
+standard.save!
+
+
+admin = User.new(
+  email: "admin@bloc.com",
+  password: "123456",
+  role: "admin"
+)
+admin.skip_confirmation!
+admin.save!
+
 
  puts "Seed finished"
  puts "#{User.count} users created"

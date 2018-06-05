@@ -10,10 +10,10 @@ class UsersController < ApplicationController
   end
 
   def downgrade
-
+    @user = current_user
+    current_user.update_attribute(:role, 'standard')
+    current_user.wikis.update_all(private: false)
     flash[:notice] = "You are no longer a premium user! Please continue your subscription to have access to Premium content"
     redirect_to user_path(current_user)
-    current_user.wikis.update_all(private: false)
-    current_user.standard!
   end
 end

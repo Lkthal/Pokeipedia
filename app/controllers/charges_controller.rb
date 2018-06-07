@@ -18,17 +18,23 @@ class ChargesController < ApplicationController
           card: params[:stripeToken]
         )
       end
-      charge = Stripe::Charge.create(
-        customer: customer.id, # Note -- this is NOT the user_id in your app
-        amount: 15_00,
-        description: "Premium Membership - #{current_user.email}",
-        currency: 'usd'
-      )
 
-      flash[:notice] = "Thanks for your contribution, #{current_user.email}! Please continue tp support us."
-      redirect_to user_path(current_user) # or wherever
-      current_user.premium!
+      if current_user.premium!
+        charge = Stripe::Charge.create(
+          customer: customer.id,
+          amount: 15_00,
+          description: "Premium Membership - #{current_user.email}",
+          currency: 'usd'
+        )
 
+        flash[:notice] = "Thanks for your contribution, #{current_user.email}! Please continue tp support us."
+        redirect_to user_path(current_user) # or wherever
+        current_user.premium!
+
+      else
+        flash[:error] = "There was an error, please try again"
+        redirect_to user_path(current_user)
+      end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

@@ -8,6 +8,13 @@
       <li>guideline stuffs 2.</li>
       <li>guideline stuffs 3.</li>
     </ul>
+    <br>
+    <% if authorized_to_add_collabs?(@wiki) %>
+     <div>
+        <%= render partial: 'collaborators/collaborators', locals: { wiki: @wiki } %>
+        <%= render partial: 'collaborators/form', locals: { wiki: @wiki } %>
+      </div>
+    <% end %>
   </div>
   <div class="col-md-8">
   <%= render partial: 'form', locals: { wiki: @wiki } %>

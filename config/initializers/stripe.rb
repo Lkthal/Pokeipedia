@@ -1,7 +1,7 @@
 # Store the environment variables on the Rails.configuration object
 Rails.configuration.stripe = {
-  PUBLISHABLE_KEY=pk_test_UMtFagEq7D9NIKcPa1xUDu7k
-  SECRET_KEY=sk_test_fyChJBJuq5rWV1mh9NJBZAVs
+  PUBLISHABLE_KEY: ENV['STRIPE_PUBLISHABLE_KEY'],
+  SECRET_KEY: ENV['STRIPE_SECRET_KEY']
 }
 
 # Set our app-stored secret key with Stripe

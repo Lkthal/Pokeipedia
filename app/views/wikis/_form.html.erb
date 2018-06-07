@@ -1,8 +1,8 @@
 <%= form_for [wiki] do |f| %>
-  <% if current_user.admin? || current_user.premium? %>
+<% if current_user.admin? || current_user.premium? || @wiki.users.include?(current_user) %>
     <div class="form-group">
-      <%= f.label :private, class: 'checkbox' do %>
-        <%= f.check_box :private %> Private wiki
+      <%= f.check_box :private, 'checkbox pull-right' do %> 
+        <%= f.check_box :private, checked: true %> Private wiki
       <% end %>
     </div>
   <% end %>
@@ -16,5 +16,6 @@
   </div>
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-success' %>
+    <%= link_to 'Cancel', @wiki, class: 'btn btn-danger' %>
   </div>
 <% end %>

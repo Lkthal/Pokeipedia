@@ -31,6 +31,18 @@
             <% end %>
           </h4>
         </div>
+        <br><br>
+       <% unless @user.wiki_collaborations.empty? %>
+         <h2>Collab Wikis</h2>
+         <h4>
+           <% @user.wiki_collaborations.each do |collab| %>
+             <%= link_to collab.title, wiki_path(collab) %>
+             <% if collab.private? %>
+               <small>(private)</small>
+             <% end %>
+           <% end %>
+         </h4>
+       <% end %>
       </center>
   </div>
     <div class="pull-right">

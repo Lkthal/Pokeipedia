@@ -2,13 +2,15 @@
 <center>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1><%= @wiki.title %></h1>
-      <% if @wiki.private? %>
-        <p>(private wiki)</p>
-      <% end %>
-      <small>submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= link_to @wiki.user.username, user_path(@wiki.user) %>.</small>
-      <br><br>
-      <%= link_to " ", wikis_path %>
+      <center>
+        <h1><%= @wiki.title %></h1>
+        <% if @wiki.private? %>
+          <p>(private wiki)</p>
+        <% end %>
+        <small>submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= link_to @wiki.user.username, user_path(@wiki.user) %>.</small>
+        <br><br>
+        <%= link_to "", wikis_path %>
+      </center>
       <br><br>
       <p><%= markdown(@wiki.body) %></p>
       <br>
@@ -22,5 +24,16 @@
             <%= link_to "New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
           <% end %>
         </div>
+
+      <div class="col-xs-4 col-xs-offset-4">
+        <br><br>
+        <% if @wiki.private? && (@wiki.user == current_user || current_user.admin? || @wiki.users.include?(current_user)) %>
+          <div>
+            <%= render partial: 'collaborators/collaborators', locals: { wiki: @wiki } %>
+        <% end %>
+        <% if authorized_to_add_collabs?(@wiki) %>
+          <%= render partial: 'collaborators/form', locals: { wiki: @wiki } %>
+        <% end %>
+          </div>
       </div>
 </center

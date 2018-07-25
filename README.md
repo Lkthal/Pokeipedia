@@ -1,25 +1,45 @@
-# README
+# Pokeipedia
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pokeipedia is a wikipedia clone with the focus of bringing pokemon lovers together to contribute and share information about Pokemon. The webpage can grow as more contributor help and collaborate by creating post and topics. 
 
-Things you may want to cover:
 
-* Ruby version
+### Installing
 
-* System dependencies
+Clone the project to local directory to further build off the project
+```
+git clone git@github.com:Lkthal/Pokeipedia.git
+```
+Make sure you have ruby install
+refer to link for installation of Ruby on rail
+https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/nginx/oss/install_language_runtime.html
 
-* Configuration
+## Deployment
+To deploy run code below in terminal
+```rails s
+```
+## Built With
 
-* Database creation
+- Rails
+- Heroku
+- Bootstrap
+- Devise
+- Pundit
+- Stripe
+- RSpec
+- Shoulda
+- Faker
+- Factory Girl
+- Figaro
 
-* Database initialization
+## License
 
-* How to run the test suite
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-* Services (job queues, cache servers, search engines, etc.)
+## Authors
 
-* Deployment instructions
+* **Thal Syhabout** - *Initial work* - [lkthal](https://github.com/lkthal)
 
-* ...
-# blocipedia
+
+## Acknowledgments
+
+* Thanks Bloc.io for helping me with this project
